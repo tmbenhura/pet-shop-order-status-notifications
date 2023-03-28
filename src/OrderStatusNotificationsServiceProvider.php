@@ -6,6 +6,7 @@ namespace PetShop\OrderStatusNotifications;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use PetShop\OrderStatusNotifications\Observers\ModelObserver;
 
 class OrderStatusNotificationsServiceProvider extends PackageServiceProvider
 {
@@ -19,5 +20,14 @@ class OrderStatusNotificationsServiceProvider extends PackageServiceProvider
         $package
             ->name('order-status-notifications')
             ->hasConfigFile();
+    }
+
+    public function boot(): void
+    {
+        $model = config('order-status-notifications.model');
+
+        if (class_exists($model)) {
+            $model::observe(ModelObserver::class);
+        }
     }
 }
