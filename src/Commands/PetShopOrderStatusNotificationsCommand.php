@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace PetShop\PetShopOrderStatusNotifications\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class PetShopOrderStatusNotificationsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'pet-shop-order-status-notifications';
 
     public $description = 'My command';
 
