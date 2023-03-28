@@ -7,6 +7,7 @@ namespace PetShop\OrderStatusNotifications;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use PetShop\OrderStatusNotifications\Observers\ModelObserver;
+use PetShop\OrderStatusNotifications\Providers\EventServiceProvider;
 
 class OrderStatusNotificationsServiceProvider extends PackageServiceProvider
 {
@@ -20,6 +21,8 @@ class OrderStatusNotificationsServiceProvider extends PackageServiceProvider
         $package
             ->name('order-status-notifications')
             ->hasConfigFile();
+
+        $this->app->register(EventServiceProvider::class);
     }
 
     public function boot(): void

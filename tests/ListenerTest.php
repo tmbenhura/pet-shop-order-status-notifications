@@ -32,3 +32,15 @@ test('package listener can invoke webhook', function () {
         return $request->url() == 'http://webhook.test';
     });
 });
+
+test('package invokes webhook on event', function () {
+    config()->set('order-status-notifications.webhook_url', 'http://webhook.test');
+    Http::fake(['webhook.test' => Http::response('ok')]);
+
+    $order = $this->createOrder();
+    OrderStatusUpdated::dispatch($order->uuid, $order->status->title, $order->updated_at);
+
+    Http::assertSent(function (Request $request) {
+        return $request->url() == 'http://webhook.test';
+    });
+});
