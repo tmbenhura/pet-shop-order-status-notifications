@@ -14,6 +14,8 @@ class ModelObserver
      */
     public function updated(Model $model): void
     {
-        OrderStatusUpdated::dispatch($model->uuid, $model->status->title, $model->updated_at);
+        if ($model->isDirty('order_status_uuid')) {
+            OrderStatusUpdated::dispatch($model->uuid, $model->status->title, $model->updated_at);
+        }
     }
 }

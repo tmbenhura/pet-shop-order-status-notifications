@@ -15,8 +15,19 @@ test('package broadcasts event when model updated', function () {
     $order->forceFill(
         ['order_status_uuid' => $this->createOrderStatus()->uuid]
     )->update();
-    expect('')->toBe('');
+
     Event::assertDispatched(OrderStatusUpdated::class);
+});
+
+test('package does not broadcast event when order status is not updated', function () {
+    Event::fake(OrderStatusUpdated::class);
+
+    $order = $this->createOrder();
+    $order->forceFill(
+        ['amount_cents' => 200]
+    )->update();
+
+    Event::assertNotDispatched(OrderStatusUpdated::class);
 });
 
 test('package listener can invoke webhook', function () {
