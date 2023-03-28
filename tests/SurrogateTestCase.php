@@ -111,7 +111,7 @@ class SurrogateTestCase extends Orchestra
         $order = Order::create(
             [
                 'user_id' => $user->id,
-                'uuid' => Str::uuid(),
+                'uuid' => Str::uuid()->toString(),
                 'order_status_uuid' => $orderStatus->uuid,
                 'payment_uuid' => $payment->uuid,
                 'billing_address' => fake()->streetAddress(),
