@@ -1,10 +1,12 @@
 <?php
 
-namespace PetShop\PetShopOrderStatusNotifications\Tests;
+declare(strict_types=1);
+
+namespace PetShop\OrderStatusNotifications\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use PetShop\PetShopOrderStatusNotifications\PetShopOrderStatusNotificationsServiceProvider;
+use PetShop\OrderStatusNotifications\OrderStatusNotificationsServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +15,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'PetShop\\PetShopOrderStatusNotifications\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'PetShop\\OrderStatusNotifications\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            PetShopOrderStatusNotificationsServiceProvider::class,
+            OrderStatusNotificationsServiceProvider::class,
         ];
     }
 

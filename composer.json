@@ -36,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "PetShop\\PetShopOrderStatusNotifications\\": "src/",
-            "PetShop\\PetShopOrderStatusNotifications\\Database\\Factories\\": "database/factories/"
+            "PetShop\\OrderStatusNotifications\\": "src/",
+            "PetShop\\OrderStatusNotifications\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PetShop\\PetShopOrderStatusNotifications\\Tests\\": "tests/"
+            "PetShop\\OrderStatusNotifications\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -64,10 +64,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "PetShop\\PetShopOrderStatusNotifications\\PetShopOrderStatusNotificationsServiceProvider"
+                "PetShop\\OrderStatusNotifications\\OrderStatusNotificationsServiceProvider"
             ],
             "aliases": {
-                "PetShopOrderStatusNotifications": "PetShop\\PetShopOrderStatusNotifications\\Facades\\PetShopOrderStatusNotifications"
+                "OrderStatusNotifications": "PetShop\\OrderStatusNotifications\\Facades\\OrderStatusNotifications"
             }
         }
     },
